@@ -1,0 +1,29 @@
+import os
+import sys
+import copy
+import subprocess
+import shutil, errno
+HOST= input('host name')
+# Ports are handled in ~/.ssh/config since we use OpenSSH
+COMMAND="uname -a"
+
+ssh = subprocess.Popen(["ssh", "%s" % HOST, COMMAND],
+                      shell=False,
+                      stdout=subprocess.PIPE,
+                      stderr=subprocess.PIPE)
+result = ssh.stdout.readlines()
+if result == []:
+   error = ssh.stderr.readlines()
+   print >>sys.stderr, "ERROR: %s" % error
+path = 'S:/'
+os.chdir('S:/')
+print: os.getcwd()
+dirpath = os.getcwd()
+print("current directory is : " + dirpath)
+cp = copy.deepcopy('S:/')
+sys.stdout = open('boot.img', 'w')
+with open("/dev/sda",'rb') as f:
+   with open("~/.dd", "wb") as i:
+       while True:
+           if i.write(f.read(512)) == 0:
+               break

@@ -1,3 +1,9 @@
+#SD card imager
+#CNA 336, spring
+#parker, pdswift@student.rtc.edu
+
+
+
 import os
 import sys
 import copy
